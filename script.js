@@ -170,11 +170,17 @@ function renderWeather(weather) {
   } else if (formattedTimeParsed >= 12 && formattedTimeParsed < 18) {
     container.style.backgroundImage = `url(${daytimePath})`;
     container.style.backgroundSize = "cover";
+    tempCSpan.style.color = "#23395d";
+    windSSpan.style.color = "#23395d";
+    humiditySpan.style.color = "#23395d";
+    feelsLikeC.style.color = "#23395d";
+    windSSpan.style.color = "#23395d";
   } else if (formattedTimeParsed >= 18 && formattedTimeParsed < 21) {
     container.style.backgroundImage = `url(${sunsetImgPath})`;
     container.style.backgroundSize = "cover";
   } else if (formattedTimeParsed >= 21 && formattedTimeParsed < 24) {
     container.style.backgroundImage = `url(${nightImgPath})`;
+    tempCSpan.style.color = "#23395d";
     container.style.backgroundSize = "cover";
   } else {
     container.style.backgroundImage = `url(${postMidnightPath})`;
