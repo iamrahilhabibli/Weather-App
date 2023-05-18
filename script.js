@@ -12,7 +12,6 @@ function getWeather(initialSearch) {
       return response.json();
     })
     .then((weatherData) => {
-      console.log(weatherData);
       renderWeather(weatherData);
     })
     .catch((error) => {
@@ -147,18 +146,25 @@ function renderWeather(weather) {
   //https://pin.it/5vLUpfh
   const localTime = weather.location.localtime;
   const formattedTime = localTime.slice(11, 16);
+  const formattedTimeParsed = parseInt(localTime.slice(11, 16), 10);
   localTimeSpan.innerText = formattedTime;
 
   const nightImgPath = "./images/night.png";
+  const sunriseImgPath = "./images/sunrise.png";
+  const sunsetImgPath = "./images/sunset.jpeg";
+  const postMidnightPath = "./images/postmidnight.jpeg";
+  const daytimePath = "./images/daytime.jpeg";
 
-  if (formattedTime >= 6 && formattedTime < 12) {
+  if (formattedTimeParsed >= 6 && formattedTimeParsed < 12) {
+    container.style.backgroundImage = `url(${sunriseImgPath})`;
+  } else if (formattedTimeParsed >= 12 && formattedTimeParsed < 18) {
+    container.style.backgroundImage = `url(${daytimePath})`;
+  } else if (formattedTimeParsed >= 18 && formattedTimeParsed < 21) {
+    container.style.backgroundImage = `url(${sunsetImgPath})`;
+  } else if (formattedTimeParsed >= 21 && formattedTimeParsed < 24) {
     container.style.backgroundImage = `url(${nightImgPath})`;
-  } else if (formattedTime >= 12 && formattedTime < 18) {
-    container.style.backgroundImage = `url(${nightImgPath})`;
-  } else if (formattedTime >= 18 && formattedTime < 21) {
-    container.style.backgroundImage = `url(${nightImgPath})`;
-  } else if (formattedTime >= 21 && formattedTime < 24) {
-    container.style.backgroundImage = `url(${nightImgPath})`;
+  } else {
+    container.style.backgroundImage = `url(${postMidnightPath})`;
   }
 
   const incomingDate = weather.location.localtime.slice(0, 11).trim();
