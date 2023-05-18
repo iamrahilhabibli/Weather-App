@@ -99,17 +99,22 @@ midSpanContainer.appendChild(midSpanOther);
 
 const windIcon = document.createElement("i");
 windIcon.classList.add("fa-solid", "fa-wind");
+console.log(windIcon);
 let windSSpan = document.querySelector(".windSSpan");
 if (!windSSpan) {
   windSSpan = document.createElement("span");
   windSSpan.classList.add("windSSpan");
+  windSSpan.appendChild(windIcon);
   midSpanOther.appendChild(windSSpan);
 }
 
+const humidityIcon = document.createElement("i");
+humidityIcon.classList.add("fa-solid", "fa-water");
 let humiditySpan = document.querySelector(".humiditySpan");
 if (!humiditySpan) {
   humiditySpan = document.createElement("span");
   humiditySpan.classList.add("humiditySpan");
+  humiditySpan.appendChild(humidityIcon);
   midSpanOther.appendChild(humiditySpan);
 }
 
@@ -148,7 +153,6 @@ function renderWeather(weather) {
   const countryName = weather.location.country;
   const cityName = weather.location.name;
   countryCitySpan.innerText = `${countryName}, ${cityName}`;
-  //https://pin.it/5vLUpfh
   const localTime = weather.location.localtime;
   const formattedTime = localTime.slice(11, 16);
   const formattedTimeParsed = parseInt(localTime.slice(11, 16), 10);
@@ -187,10 +191,10 @@ function renderWeather(weather) {
   tempCSpan.innerText = currentTemp + " °C";
 
   const windSpeed = weather.current.wind_kph;
-  windSSpan.innerText = windSpeed + " km/h";
+  windSSpan.innerHTML = `${windIcon.outerHTML} ${windSpeed} km/h`;
 
   const humidity = weather.current.humidity;
-  humiditySpan.innerText = humidity + " %";
+  humiditySpan.innerHTML = `${humidityIcon.outerHTML} ${humidity} %`;
 
   const feelsLikeC = weather.current.temp_c;
   feelsLikeSpan.innerText = "Feels like:" + feelsLikeC + " °C";

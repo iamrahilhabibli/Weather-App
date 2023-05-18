@@ -74,6 +74,7 @@ body {
   justify-content: center;
   font-size: 30px;
   text-align: center;
+  gap: 10px;
 }
 
 .SearchContainer {
@@ -134,4 +135,8 @@ body {
   font-size: x-large;
   text-align: center;
   color: white;
+}
+.fa-wind {
+  font-size: 30px;
+  /* z-index: 999; */
 }
