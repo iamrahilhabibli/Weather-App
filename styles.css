@@ -33,3 +33,25 @@
     font-size: 22px;
     letter-spacing: 1px;
 }
+.tempCSpan{
+    font-size: 30px;
+    font-weight: 400;
+}
+.midSpanOther{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+}
+.windSSpan{
+    font-size: 30px;
+    font-weight: 400;
+}
+.humiditySpan{
+    font-size: 30px;
+    font-weight: 400;
+}
+.feelsLikeSpan{
+    font-size: 30px;
+    font-weight: 400;
+}
