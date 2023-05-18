@@ -42,23 +42,25 @@
   font-weight: 400;
 }
 .midSpanOther {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid white;
+}
+
+.windSSpan,
+.humiditySpan,
+.feelsLikeSpan,
+.uvIndexSpan {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  column-gap: 10px;
-}
-.windSSpan {
+  justify-content: center;
   font-size: 30px;
-  font-weight: 400;
+  text-align: center;
 }
-.humiditySpan {
-  font-size: 30px;
-  font-weight: 400;
-}
-.feelsLikeSpan {
-  font-size: 30px;
-  font-weight: 400;
-}
+
 .SearchContainer {
   padding-top: 20px;
   display: flex;

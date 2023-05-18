@@ -28,7 +28,6 @@ if (!container) {
   container = document.createElement("div");
   container.classList.add("container");
 }
-
 const SearchContainer = document.createElement("div");
 SearchContainer.classList.add("SearchContainer");
 container.appendChild(SearchContainer);
@@ -96,6 +95,8 @@ const midSpanOther = document.createElement("div");
 midSpanOther.classList.add("midSpanOther");
 midSpanContainer.appendChild(midSpanOther);
 
+const windIcon = document.createElement("i");
+windIcon.classList.add("fa-solid", "fa-wind");
 let windSSpan = document.querySelector(".windSSpan");
 if (!windSSpan) {
   windSSpan = document.createElement("span");
@@ -143,10 +144,22 @@ function renderWeather(weather) {
   const countryName = weather.location.country;
   const cityName = weather.location.name;
   countryCitySpan.innerText = `${countryName}, ${cityName}`;
-
+  //https://pin.it/5vLUpfh
   const localTime = weather.location.localtime;
   const formattedTime = localTime.slice(11, 16);
   localTimeSpan.innerText = formattedTime;
+
+  const nightImgPath = "./images/night.png";
+
+  if (formattedTime >= 6 && formattedTime < 12) {
+    container.style.backgroundImage = `url(${nightImgPath})`;
+  } else if (formattedTime >= 12 && formattedTime < 18) {
+    container.style.backgroundImage = `url(${nightImgPath})`;
+  } else if (formattedTime >= 18 && formattedTime < 21) {
+    container.style.backgroundImage = `url(${nightImgPath})`;
+  } else if (formattedTime >= 21 && formattedTime < 24) {
+    container.style.backgroundImage = `url(${nightImgPath})`;
+  }
 
   const incomingDate = weather.location.localtime.slice(0, 11).trim();
   const date = new Date(incomingDate);
@@ -169,13 +182,50 @@ function renderWeather(weather) {
   humiditySpan.innerText = humidity + " %";
 
   const feelsLikeC = weather.current.temp_c;
-  feelsLikeSpan.innerText = feelsLikeC + " °C";
+  feelsLikeSpan.innerText = "Feels like:" + feelsLikeC + " °C";
 
   const uvIndex = weather.current.uv;
   uvIndexSpan.innerText = uvIndex;
+  checkUVIndex(uvIndex);
 }
 getWeather(initialSearch);
 
 function checkSameInput() {
   let searchCity = initialSearch;
 }
+function checkUVIndex(uvIndex) {
+  if (uvIndex >= 0 && uvIndex <= 2) {
+    uvIndexSpan.style.color = "green";
+  } else if (uvIndex >= 3 && uvIndex <= 5) {
+    uvIndexSpan.style.color = "yellow";
+  } else if (uvIndex >= 6 && uvIndex <= 7) {
+    uvIndexSpan.style.color = "orange";
+  } else if (uvIndex >= 8 && uvIndex <= 10) {
+    uvIndexSpan.style.color = "red";
+  } else {
+    uvIndexSpan.style.color = "purple";
+  }
+}
+
+// function updateBackgroundImage() {
+//   const currentDate = new Date();
+//   const currentHour = currentDate.getHours();
+//   const backgroundElement = document.querySelector(".background");
+
+//   if (currentHour >= 6 && currentHour < 12) {
+//     // Morning
+//     backgroundElement.style.backgroundImage = "url('morning.jpg')";
+//   } else if (currentHour >= 12 && currentHour < 18) {
+//     // Afternoon
+//     backgroundElement.style.backgroundImage = "url('afternoon.jpg')";
+//   } else if (currentHour >= 18 && currentHour < 24) {
+//     // Evening
+//     backgroundElement.style.backgroundImage = "url('evening.jpg')";
+//   } else {
+//     // Night
+//     backgroundElement.style.backgroundImage = "url('night.jpg')";
+//   }
+// }
+
+// // Call the function to update the background image when the page loads
+// updateBackgroundImage();
