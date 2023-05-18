@@ -16,7 +16,7 @@ function getWeather(initialSearch) {
     })
     .catch((error) => {
       console.log("Oops, not found");
-      container.innerHTML = ""; // Remove all existing content inside the container
+      container.innerHTML = "";
       const errorMessage = document.createElement("span");
       errorMessage.classList.add("error-msg");
       errorMessage.innerText = "Please type a valid city name";
