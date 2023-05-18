@@ -166,14 +166,19 @@ function renderWeather(weather) {
 
   if (formattedTimeParsed >= 6 && formattedTimeParsed < 12) {
     container.style.backgroundImage = `url(${sunriseImgPath})`;
+    container.style.backgroundSize = "cover";
   } else if (formattedTimeParsed >= 12 && formattedTimeParsed < 18) {
     container.style.backgroundImage = `url(${daytimePath})`;
+    container.style.backgroundSize = "cover";
   } else if (formattedTimeParsed >= 18 && formattedTimeParsed < 21) {
     container.style.backgroundImage = `url(${sunsetImgPath})`;
+    container.style.backgroundSize = "cover";
   } else if (formattedTimeParsed >= 21 && formattedTimeParsed < 24) {
     container.style.backgroundImage = `url(${nightImgPath})`;
+    container.style.backgroundSize = "cover";
   } else {
     container.style.backgroundImage = `url(${postMidnightPath})`;
+    container.style.backgroundSize = "cover";
   }
 
   const incomingDate = weather.location.localtime.slice(0, 11).trim();
@@ -184,6 +189,7 @@ function renderWeather(weather) {
   const iconForCondition = weather.current.condition.icon;
   const icon = document.createElement("img");
   icon.src = "https:" + iconForCondition;
+  icon.style.backgroundSize = "cover";
   imgContainer.innerHTML = "";
   imgContainer.appendChild(icon);
 
