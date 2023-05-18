@@ -1,57 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-*{
-    font-family:'Roboto', sans-serif;
+* {
+  font-family: "Roboto", sans-serif;
 }
-.container{
-    width: 300px;
-    height: 600px;
-    color: white;
-    background-color: #334F71;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 60px;
-    row-gap: 18px;
+.container {
+  width: 300px;
+  height: 600px;
+  color: white;
+  background-color: #334f71;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 60px;
+  row-gap: 18px;
 }
-.topSpanContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 14px;
+.topSpanContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 14px;
 }
-.countryCitySpan{
-    letter-spacing: 1px;
-    font-size: 22px;
+.countryCitySpan {
+  letter-spacing: 1px;
+  font-size: 22px;
 }
-.localTimeSpan{
-    font-size: 38px;
-    font-weight: 700;
+.localTimeSpan {
+  font-size: 38px;
+  font-weight: 700;
 }
-.currentDateSpan{
-    font-size: 22px;
-    letter-spacing: 1px;
+.currentDateSpan {
+  font-size: 22px;
+  letter-spacing: 1px;
 }
-.tempCSpan{
-    font-size: 30px;
-    font-weight: 400;
+.tempCSpan {
+  font-size: 30px;
+  font-weight: 400;
 }
-.midSpanOther{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    column-gap: 10px;
+.midSpanOther {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 10px;
 }
-.windSSpan{
-    font-size: 30px;
-    font-weight: 400;
+.windSSpan {
+  font-size: 30px;
+  font-weight: 400;
 }
-.humiditySpan{
-    font-size: 30px;
-    font-weight: 400;
+.humiditySpan {
+  font-size: 30px;
+  font-weight: 400;
 }
-.feelsLikeSpan{
-    font-size: 30px;
-    font-weight: 400;
+.feelsLikeSpan {
+  font-size: 30px;
+  font-weight: 400;
+}
+.SearchContainer {
+  display: flex;
+  flex-direction: row;
+}
+#search-bar {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+::placeholder {
+  color: white;
 }

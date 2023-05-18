@@ -27,6 +27,26 @@ if (!container) {
   container.classList.add("container");
 }
 
+const SearchContainer = document.createElement("div");
+SearchContainer.classList.add("SearchContainer");
+container.appendChild(SearchContainer);
+
+const locationIcon = document.createElement("i");
+locationIcon.classList.add("fa-solid", "fa-location-dot");
+SearchContainer.appendChild(locationIcon);
+
+const searchInput = document.createElement("input");
+searchInput.setAttribute("type", "text");
+searchInput.setAttribute("placeholder", "Enter a location");
+searchInput.setAttribute("id", "search-bar");
+SearchContainer.appendChild(searchInput);
+
+const searchButton = document.createElement("button");
+searchButton.setAttribute("id", "search-btn");
+searchButton.classList.add("fa-solid", "fa-magnifying-glass");
+// searchButton.textContent = "Search";
+SearchContainer.appendChild(searchButton);
+
 const topSpanContainer = document.createElement("div");
 topSpanContainer.classList.add("topSpanContainer");
 container.appendChild(topSpanContainer);
@@ -103,21 +123,6 @@ if (!uvIndexSpan) {
   uvIndexSpan.classList.add("uvIndexSpan");
   midSpanOther.appendChild(uvIndexSpan);
 }
-
-const botSearchContainer = document.createElement("div");
-botSearchContainer.classList.add("botSearchContainer");
-container.appendChild(botSearchContainer);
-
-const searchInput = document.createElement("input");
-searchInput.setAttribute("type", "text");
-searchInput.setAttribute("placeholder", "Enter a location");
-searchInput.setAttribute("id", "search-bar");
-botSearchContainer.appendChild(searchInput);
-
-const searchButton = document.createElement("button");
-searchButton.setAttribute("id", "search-btn");
-searchButton.textContent = "Search";
-botSearchContainer.appendChild(searchButton);
 
 document.body.appendChild(container);
 
