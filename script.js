@@ -4,22 +4,19 @@ fetch(`http://api.weatherapi.com/v1/current.json?key=${api_key}&q=Baku&aqi=no`)
   .then((x) => renderWeather(x));
 
 const container = document.querySelector(".container");
+const countryCitySpan = document.querySelector(".countryCitySpan");
+const localTimeSpan = document.querySelector(".localTimeSpan");
+function renderWeather(weather) {
+  //Country name / City
+  const countryName = weather.location.country;
+  const cityName = weather.location.name;
+  countryCitySpan.innerText = `${countryName},${cityName}`;
 
-// function renderWeather(weather) {
-//   const tempCel = weather.current.temp_c;
-//   const windKph = weather.current.wind_kph;
-//   const visKm = weather.current.vis_km;
-
-//   const tempSpan = document.createElement("span");
-//   tempSpan.innerText = `Temprature is: ${tempCel}`;
-
-//   const windSpan = document.createElement("span");
-//   windSpan.innerText = `Temprature is: ${windKph}`;
-
-//   const visSpan = document.createElement("span");
-//   visSpan.innerText = `Temprature is: ${visKm}`;
-
-//   container.appendChild(tempSpan);
-//   container.appendChild(windSpan);
-//   container.appendChild(visSpan);
-// }
+  //Local time in "hh:mm"
+  const localTime = weather.location.localTime;
+  const formattedLocalTime = new Date(localTime).toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  localTimeSpan.innerText = `${formattedLocalTime}`;
+}
