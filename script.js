@@ -1,11 +1,15 @@
+let initialSearch = "London";
+
 const api_key = "7e58c48abd6d40fe85b54302231805";
-fetch(`http://api.weatherapi.com/v1/current.json?key=${api_key}&q=Baku&aqi=no`)
+fetch(
+  `http://api.weatherapi.com/v1/current.json?key=${api_key}&q=${initialSearch}&aqi=no`
+)
   .then((x) => x.json())
   .then((x) => renderWeather(x));
 
-// fetch(`http://api.weatherapi.com/v1/current.json?key=${api_key}&q=Baku&aqi=no`)
-//   .then((x) => x.json())
-//   .then((x) => console.log(x));
+fetch(`http://api.weatherapi.com/v1/current.json?key=${api_key}&q=Baku&aqi=no`)
+  .then((x) => x.json())
+  .then((x) => console.log(x));
 
 const container = document.querySelector(".container");
 const countryCitySpan = document.querySelector(".countryCitySpan");
@@ -17,6 +21,7 @@ const humiditySpan = document.querySelector(".humiditySpan");
 const feelsLikeSpan = document.querySelector(".feelsLikeSpan");
 const uvIndexSpan = document.querySelector(".uvIndexSpan");
 const searchBar = document.querySelector("#search-bar");
+const searchBtn = document.querySelector("#search-btn");
 
 function renderWeather(weather) {
   //Country name / City
@@ -54,6 +59,10 @@ function renderWeather(weather) {
 }
 
 searchBar.addEventListener("keyup", (e) => {
-  let value = e.target.value;
-  console.log(value);
+  initialSearch = e.target.value.trim();
+  console.log(initialSearch);
+});
+
+searchBtn.addEventListener("click", () => {
+  console.log(initialSearch);
 });
