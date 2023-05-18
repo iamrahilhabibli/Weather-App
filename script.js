@@ -201,9 +201,6 @@ function renderWeather(weather) {
 }
 getWeather(initialSearch);
 
-function checkSameInput() {
-  let searchCity = initialSearch;
-}
 function checkUVIndex(uvIndex) {
   if (uvIndex >= 0 && uvIndex <= 2) {
     uvIndexSpan.style.color = "green";
