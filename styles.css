@@ -16,7 +16,7 @@
   flex-direction: column;
   align-items: center;
   /* padding: 30px 60px; */
-  row-gap: 18px;
+  gap: 28px;
 }
 .topSpanContainer {
   display: flex;
@@ -59,6 +59,7 @@
   font-weight: 400;
 }
 .SearchContainer {
+  padding-top: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;

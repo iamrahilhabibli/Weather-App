@@ -1,23 +1,25 @@
 let initialSearch = "London";
 const api_key = "7e58c48abd6d40fe85b54302231805";
 
-async function getWeather(initialSearch) {
-  try {
-    const response = await fetch(
-      `http://api.weatherapi.com/v1/current.json?key=${api_key}&q=${initialSearch}&aqi=no`
-    );
-
-    if (response.status === 400) {
-      throw new Error("Not Found");
-    }
-
-    const weatherData = await response.json();
-    renderWeather(weatherData);
-  } catch (error) {
-    console.log("Oops, not found");
-    // You can update your HTML to display the error message in the desired element
-    // For example: errorContainer.innerText = 'Oops, not found';
-  }
+function getWeather(initialSearch) {
+  fetch(
+    `http://api.weatherapi.com/v1/current.json?key=${api_key}&q=${initialSearch}&aqi=no`
+  )
+    .then((response) => {
+      if (response.status === 400) {
+        throw new Error("Not Found");
+      }
+      return response.json();
+    })
+    .then((weatherData) => {
+      console.log(weatherData);
+      renderWeather(weatherData);
+    })
+    .catch((error) => {
+      console.log("Oops, not found");
+      // You can update your HTML to display the error message in the desired element
+      // For example: errorContainer.innerText = 'Oops, not found';
+    });
 }
 
 let container = document.querySelector(".container");
@@ -44,7 +46,6 @@ SearchContainer.appendChild(searchInput);
 const searchButton = document.createElement("button");
 searchButton.setAttribute("id", "search-btn");
 searchButton.classList.add("fa-solid", "fa-magnifying-glass");
-// searchButton.textContent = "Search";
 SearchContainer.appendChild(searchButton);
 
 const topSpanContainer = document.createElement("div");
@@ -67,9 +68,8 @@ if (!localTimeSpan) {
 
 const currentDateSpan = document.createElement("span");
 currentDateSpan.classList.add("currentDateSpan");
-currentDateSpan.textContent = "Thursday, 18th May";
+currentDateSpan.innerText = "";
 topSpanContainer.appendChild(currentDateSpan);
-
 let imgContainer = document.querySelector(".imgContainer");
 if (!imgContainer) {
   imgContainer = document.createElement("div");
@@ -148,6 +148,11 @@ function renderWeather(weather) {
   const formattedTime = localTime.slice(11, 16);
   localTimeSpan.innerText = formattedTime;
 
+  const incomingDate = weather.location.localtime.slice(0, 11).trim();
+  const date = new Date(incomingDate);
+  const options = { weekday: "long", day: "numeric", month: "long" };
+  var formattedDate = date.toLocaleString("en-US", options);
+  currentDateSpan.innerText = formattedDate;
   const iconForCondition = weather.current.condition.icon;
   const icon = document.createElement("img");
   icon.src = "https:" + iconForCondition;
