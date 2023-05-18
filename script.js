@@ -132,13 +132,18 @@ document.body.appendChild(container);
 const searchBar = document.querySelector("#search-bar");
 const searchBtn = document.querySelector("#search-btn");
 
+let cachedValue;
+
 searchBar.addEventListener("keyup", (e) => {
   initialSearch = e.target.value.trim();
   console.log(initialSearch);
 });
 
 searchBtn.addEventListener("click", () => {
+  if (cachedValue === initialSearch) return;
   getWeather(initialSearch);
+  cachedValue = initialSearch;
+  console.log(cachedValue);
   console.log(initialSearch);
 });
 
@@ -215,26 +220,3 @@ function checkUVIndex(uvIndex) {
     uvIndexSpan.style.color = "purple";
   }
 }
-
-// function updateBackgroundImage() {
-//   const currentDate = new Date();
-//   const currentHour = currentDate.getHours();
-//   const backgroundElement = document.querySelector(".background");
-
-//   if (currentHour >= 6 && currentHour < 12) {
-//     // Morning
-//     backgroundElement.style.backgroundImage = "url('morning.jpg')";
-//   } else if (currentHour >= 12 && currentHour < 18) {
-//     // Afternoon
-//     backgroundElement.style.backgroundImage = "url('afternoon.jpg')";
-//   } else if (currentHour >= 18 && currentHour < 24) {
-//     // Evening
-//     backgroundElement.style.backgroundImage = "url('evening.jpg')";
-//   } else {
-//     // Night
-//     backgroundElement.style.backgroundImage = "url('night.jpg')";
-//   }
-// }
-
-// // Call the function to update the background image when the page loads
-// updateBackgroundImage();
