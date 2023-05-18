@@ -4,15 +4,15 @@
   font-family: "Roboto", sans-serif;
 }
 .container {
-  width: 300px;
-  height: 600px;
+  width: 25rem;
+  height: calc(25rem * 1.5);
   color: white;
   background-color: #334f71;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 60px;
+  /* padding: 30px 60px; */
   row-gap: 18px;
 }
 .topSpanContainer {
@@ -58,12 +58,30 @@
 .SearchContainer {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 #search-bar {
   background-color: transparent;
   border: none;
   color: white;
+  padding: 10px 20px;
+  font-size: 20px;
+  text-align: center;
 }
 ::placeholder {
   color: white;
+  font-size: 20px;
+}
+.fa-location-dot {
+  font-size: 30px;
+}
+.fa-magnifying-glass {
+  border-radius: 50%;
+  font-size: large;
+  background-color: lightblue;
+  color: white;
+  border: transparent;
+  padding: 5px;
 }
