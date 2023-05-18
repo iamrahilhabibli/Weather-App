@@ -1,4 +1,4 @@
-let initialSearch = "London";
+let initialSearch = "Oxford";
 const api_key = "7e58c48abd6d40fe85b54302231805";
 
 function getWeather(initialSearch) {
@@ -89,7 +89,7 @@ let tempCSpan = document.querySelector(".tempCSpan");
 if (!tempCSpan) {
   tempCSpan = document.createElement("span");
   tempCSpan.classList.add("tempCSpan");
-  midSpanContainer.appendChild(tempCSpan);
+  midSpanTop.appendChild(tempCSpan);
 }
 
 const midSpanOther = document.createElement("div");
@@ -174,7 +174,6 @@ function renderWeather(weather) {
   const uvIndex = weather.current.uv;
   uvIndexSpan.innerText = uvIndex;
 }
-
 getWeather(initialSearch);
 
 function checkSameInput() {

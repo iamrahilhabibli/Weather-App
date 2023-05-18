@@ -8,7 +8,7 @@
 }
 .container {
   width: 25rem;
-  height: calc(25rem * 1.5);
+  height: calc(25rem * 2);
   color: white;
   background-color: #334f71;
   border-radius: 8px;
@@ -27,6 +27,7 @@
 .countryCitySpan {
   letter-spacing: 1px;
   font-size: 22px;
+  text-align: center;
 }
 .localTimeSpan {
   font-size: 38px;
@@ -37,7 +38,7 @@
   letter-spacing: 1px;
 }
 .tempCSpan {
-  font-size: 30px;
+  font-size: 75px;
   font-weight: 400;
 }
 .midSpanOther {
@@ -87,4 +88,28 @@
   color: white;
   border: transparent;
   padding: 5px;
+}
+
+.imgContainer > img {
+  height: 150px;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: optimizeQuality;
+  animation: sunAnimation 3s linear infinite;
+}
+
+@keyframes sunAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.midSpanTop {
+  display: flex;
+  justify-content: center;
+}
+.midSpanTop > span {
 }
