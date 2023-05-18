@@ -91,21 +91,21 @@
   border: transparent;
   padding: 5px;
 }
-
 .imgContainer > img {
   height: 150px;
   image-rendering: auto;
   image-rendering: crisp-edges;
   image-rendering: optimizeQuality;
-  animation: sunAnimation 3s linear infinite;
+  animation: bounceAnimation 1s ease-in-out infinite;
 }
 
-@keyframes sunAnimation {
-  0% {
-    transform: rotate(0deg);
-  }
+@keyframes bounceAnimation {
+  0%,
   100% {
-    transform: rotate(360deg);
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 
@@ -114,4 +114,9 @@
   justify-content: center;
 }
 .midSpanTop > span {
+}
+.error-msg {
+  font-size: x-large;
+  text-align: center;
+  color: white;
 }

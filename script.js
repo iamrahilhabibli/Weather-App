@@ -16,13 +16,16 @@ function getWeather(initialSearch) {
     })
     .catch((error) => {
       console.log("Oops, not found");
-      // You can update your HTML to display the error message in the desired element
-      // For example: errorContainer.innerText = 'Oops, not found';
+      container.innerHTML = ""; // Remove all existing content inside the container
+      const errorMessage = document.createElement("span");
+      errorMessage.classList.add("error-msg");
+      errorMessage.innerText = "Please type a valid city name";
+      container.appendChild(errorMessage);
+      container.style.backgroundImage = "none";
+      container.style.backgroundColor = "black";
     });
 }
-
 let container = document.querySelector(".container");
-
 if (!container) {
   container = document.createElement("div");
   container.classList.add("container");
