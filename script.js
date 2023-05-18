@@ -21,4 +21,11 @@ function renderWeather(weather) {
   localTimeSpan.innerText = formattedTime;
 
   //icon
+  const iconForCondition = weather.current.condition.icon;
+  const icon = document.createElement("img");
+  imgContainer.appendChild(icon);
+  const lenghtOfPath = iconForCondition.length;
+  const formattedIconPath = iconForCondition.slice(2, lenghtOfPath);
+  console.log(formattedIconPath);
+  icon.setAttribute("src", formattedIconPath);
 }
