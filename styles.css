@@ -93,7 +93,7 @@ body {
   text-align: center;
 }
 ::placeholder {
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 20px;
 }
 .fa-location-dot {
