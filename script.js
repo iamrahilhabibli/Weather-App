@@ -3,9 +3,9 @@ fetch(`http://api.weatherapi.com/v1/current.json?key=${api_key}&q=Baku&aqi=no`)
   .then((x) => x.json())
   .then((x) => renderWeather(x));
 
-fetch(`http://api.weatherapi.com/v1/current.json?key=${api_key}&q=Baku&aqi=no`)
-  .then((x) => x.json())
-  .then((x) => console.log(x));
+// fetch(`http://api.weatherapi.com/v1/current.json?key=${api_key}&q=Baku&aqi=no`)
+//   .then((x) => x.json())
+//   .then((x) => console.log(x));
 
 const container = document.querySelector(".container");
 const countryCitySpan = document.querySelector(".countryCitySpan");
@@ -16,6 +16,7 @@ const windSSpan = document.querySelector(".windSSpan");
 const humiditySpan = document.querySelector(".humiditySpan");
 const feelsLikeSpan = document.querySelector(".feelsLikeSpan");
 const uvIndexSpan = document.querySelector(".uvIndexSpan");
+const searchBar = document.querySelector("#search-bar");
 
 function renderWeather(weather) {
   //Country name / City
@@ -26,18 +27,14 @@ function renderWeather(weather) {
   //Local Time
   const localTime = weather.location.localtime;
   const formattedTime = localTime.slice(11, 16);
-  console.log(formattedTime);
+
   localTimeSpan.innerText = formattedTime;
 
   //icon
   const iconForCondition = weather.current.condition.icon;
   const icon = document.createElement("img");
+  icon.src = "https:" + iconForCondition;
   imgContainer.appendChild(icon);
-  // const lenghtOfPath = iconForCondition.length;
-  // const formattedIconPath = iconForCondition.slice(2, lenghtOfPath);
-  console.log(iconForCondition);
-  icon.setAttribute("src", iconForCondition);
-
   //Temp
   const currentTemp = weather.current.temp_c;
   tempCSpan.innerText = currentTemp + " °C";
@@ -55,3 +52,8 @@ function renderWeather(weather) {
   const uvIndex = weather.current.uv;
   uvIndexSpan.innerText = uvIndex;
 }
+
+searchBar.addEventListener("keyup", (e) => {
+  let value = e.target.value;
+  console.log(value);
+});
