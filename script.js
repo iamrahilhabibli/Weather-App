@@ -136,15 +136,12 @@ let cachedValue;
 
 searchBar.addEventListener("keyup", (e) => {
   initialSearch = e.target.value.trim();
-  console.log(initialSearch);
 });
 
 searchBtn.addEventListener("click", () => {
-  if (cachedValue === initialSearch) return;
+  if (cachedValue == initialSearch) return;
   getWeather(initialSearch);
   cachedValue = initialSearch;
-  console.log(cachedValue);
-  console.log(initialSearch);
 });
 
 function renderWeather(weather) {
